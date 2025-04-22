@@ -1,0 +1,37 @@
+﻿@model RoomViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Редактировать комнату";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Number">Номер комнаты</label>
+        <input asp-for="Number" class="form-control" />
+        <span asp-validation-for="Number" class="text-danger"></span>
+    </div>
+
+    <h4>Проживающие студенты</h4>
+    <div class="form-group">
+        @foreach (var student in Model.Students)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                       name="SelectedStudentIds"
+                       value="@student.Id"
+                @(Model.SelectedStudentIds.Contains(student.Id) ? "checked" : "") />
+                <label class="form-check-label">
+                    @student.FirstName @student.LastName (Комната: @student.RoomNumber)
+                </label>
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

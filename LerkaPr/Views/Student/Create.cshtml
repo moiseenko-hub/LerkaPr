@@ -1,0 +1,38 @@
+﻿@using LerkaPr.Models
+@model StudentViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="form-container">
+    <form method="post" asp-action="Create" asp-controller="Student">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger mb-3" })
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.FirstName)
+            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", placeholder = "Имя" })
+            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.LastName)
+            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", placeholder = "Фамилия" })
+            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.LastVisit)
+            @Html.TextBoxFor(x => x.LastVisit, new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(x => x.LastVisit, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.RoomNumber)
+            @Html.TextBoxFor(x => x.RoomNumber, new { @class = "form-control", type = "number", placeholder = "Номер комнаты" })
+            @Html.ValidationMessageFor(x => x.RoomNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </form>
+</div>

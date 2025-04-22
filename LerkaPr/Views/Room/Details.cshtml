@@ -1,0 +1,39 @@
+﻿@model RoomViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Детали комнаты";
+}
+
+<h2>Комната №@Model.Number</h2>
+
+<h4>Проживающие студенты</h4>
+
+@if (Model.Students.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Последний визит</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.LastVisit.ToString("dd.MM.yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>В этой комнате никто не проживает.</em></p>
+}
+
+<a asp-action="Index" class="btn btn-secondary">Назад</a>
