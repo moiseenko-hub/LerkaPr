@@ -16,7 +16,6 @@ namespace LerkaPr.Controllers
             _roomRepository = roomRepository;
         }
 
-        // Отобразить список студентов
         public IActionResult Index()
         {
             var students = _studentRepository.GetAll();
@@ -38,7 +37,6 @@ namespace LerkaPr.Controllers
             return View();
         }
 
-        // POST: Student/Create
         [HttpPost]
         public IActionResult Create(StudentViewModel student)
         {

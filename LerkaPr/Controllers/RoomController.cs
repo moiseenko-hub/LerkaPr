@@ -119,7 +119,6 @@ namespace LerkaPr.Controllers
 
                 roomData.Number = room.Number;
 
-                // Обновим студентов, связанных с этой комнатой
                 var allStudents = _studentRepository.GetAll();
                 foreach (var student in allStudents)
                 {
@@ -129,7 +128,7 @@ namespace LerkaPr.Controllers
                     }
                     else if (student.RoomId == room.Id)
                     {
-                        student.RoomId = 0; // выселение
+                        student.RoomId = 0;
                     }
                 }
 
@@ -137,7 +136,6 @@ namespace LerkaPr.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // На случай ошибок при ModelState
             room.Students = _studentRepository.GetAll()
                 .Select(s => new StudentViewModel
                 {

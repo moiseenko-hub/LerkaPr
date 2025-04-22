@@ -14,7 +14,6 @@ namespace LerkaPr.Controllers
             _employeeRepository = employeeRepository;
         }
 
-        // Отобразить список сотрудников
         public IActionResult Index()
         {
             var employees = _employeeRepository.GetAll();
@@ -35,7 +34,6 @@ namespace LerkaPr.Controllers
             return View();
         }
 
-        // POST: Employee/Create
         [HttpPost]
         public IActionResult Create(EmployeeViewModel employee)
         {

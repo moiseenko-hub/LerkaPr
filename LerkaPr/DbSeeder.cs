@@ -7,7 +7,7 @@ namespace LerkaPr
     {
         public static void Seed(ProjectDbContext context)
         {
-            // Комнаты
+
             if (!context.Rooms.Any())
             {
                 var rooms = new List<RoomData>
@@ -20,7 +20,6 @@ namespace LerkaPr
                 context.SaveChanges();
             }
 
-            // Студенты
             if (!context.Students.Any())
             {
                 var students = new List<StudentData>
@@ -44,7 +43,7 @@ namespace LerkaPr
                 context.SaveChanges();
             }
 
-            // Услуги
+
             if (!context.Services.Any())
             {
                 var services = new List<ServiceData>
@@ -56,7 +55,7 @@ namespace LerkaPr
                 context.SaveChanges();
             }
 
-            // Сотрудники
+
             if (!context.Employees.Any())
             {
                 var employees = new List<EmployeeData>
